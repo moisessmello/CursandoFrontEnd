@@ -1,0 +1,5 @@
+REACT JS - PARA WEB
+REACT NATIVE - PARA ANDROID / IOS
+
+//Criando projeto com nextjs
+npx create-next-app@latest
