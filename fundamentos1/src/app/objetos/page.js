@@ -16,7 +16,7 @@ export default function Objetos() {
   ]; //array começa com chaves[]
 
   return (
-    <Pagina titulo="Objetos">
+    <Pagina titulo="Carros">
 <Row>
 
       {carros.map((item) => (
