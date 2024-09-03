@@ -19,7 +19,7 @@ export default function Page() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Número</th>
+            <th>ID</th>
             <th>Nome</th>
             <th>Foto</th>
           </tr>

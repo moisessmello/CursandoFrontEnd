@@ -21,7 +21,7 @@ export default function Page() {
         <Pagina titulo="Disney">
         <Row md={3}>
           {personagens.map((item) => (
-            <Col className="my-2">
+            <Col key={item._id} className="mt-3">
               <Card>
                 <Card.Img height={250} variant="top" src={item.imageUrl} />
                 <Card.Body>

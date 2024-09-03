@@ -1,5 +1,5 @@
 
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Button, Card, Col, Row } from "react-bootstrap";
 
 export default function Pagina(props) {
@@ -17,22 +17,34 @@ export default function Pagina(props) {
                         <Nav.Link href="/nomes">Nomes</Nav.Link>
                         <Nav.Link href="/numeros">Números</Nav.Link>
                         <Nav.Link href="/disney">Disney</Nav.Link>
-                        <Nav.Link href="/disney/cards">Cards</Nav.Link>
-                        <Nav.Link href="/disney/carrossel">Carrossel</Nav.Link>
-                        <Nav.Link href="/disney/tabela">Tabela</Nav.Link>
+                        <NavDropdown title="Disney" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/disney">
+                               Parágrafo
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/disney/cards">
+                               Cards
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/disney/tabela">
+                                Tabela
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/disney/carrossel">
+                                Carrossel
+                            </NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Container>
             </Navbar>
-            
-            <div className="bg-secondary text-white text-center text-center p-3">
+
+            <div className="bg-secondary text-white text-center p-3">
                 <h1>{props.titulo}</h1>
             </div>
 
             <Container>
                 {props.children}
             </Container>
-
         </>
-       
     )
 }
