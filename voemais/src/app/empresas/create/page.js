@@ -3,22 +3,28 @@
 import Pagina from "@/app/components/Pagina";
 import { Formik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button, Form } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function Page() {
 
-    function salvar(dados){
-        console.log(dados)
+    const route = useRouter()
+
+    function salvar(dados) {
+        const empresas = JSON.parse(localStorage.getItem('empresas')) || []
+        empresas.push(dados)
+        localStorage.setItem('empresas', JSON.stringify(empresas))//setItem é para inserir
+        return route.push('/empresas')
     }
 
     return (
         <Pagina titulo="Empresa">
 
             <Formik
-                initialValues={{nome: '', logo: ''}}
-                onSubmit={values=>salvar(values)}
+                initialValues={{ nome: '', logo: '', site: '' }}
+                onSubmit={values => salvar(values)}
             >
                 {({
                     values,
@@ -28,21 +34,31 @@ export default function Page() {
                     <Form>
                         <Form.Group className="mb-3" controlId="nome">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="nome" 
+                            <Form.Control
+                                type="text"
+                                name="nome"
                                 value={values.nome}
                                 onChange={handleChange('nome')}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="logo">
                             <Form.Label>Logo</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Control
+                                type="text"
                                 name="logo"
                                 value={values.logo}
                                 onChange={handleChange('logo')}
                             />
+                            </Form.Group>
+                        <Form.Group className="mb-3" controlId="site">
+                            <Form.Label>Site</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="site"
+                                value={values.site}
+                                onChange={handleChange('site')}
+                            />
+                            
                         </Form.Group>
                         <div className="text-center">
                             <Button onClick={handleSubmit} variant="success">
